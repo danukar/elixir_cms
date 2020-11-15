@@ -1,0 +1,5 @@
+# Base image
+docker build -t 476009599192.dkr.ecr.ap-southeast-1.amazonaws.com/cms-build-base:1.0.1 -f Dockerfile_Base .
+
+# Main image
+docker build -t 476009599192.dkr.ecr.ap-southeast-1.amazonaws.com/cms:1.0.3 .
