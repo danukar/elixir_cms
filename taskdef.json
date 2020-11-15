@@ -1,0 +1,30 @@
+{
+    "executionRoleArn": "arn:aws:iam::476009599192:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "name": "cms",
+            "image": "<IMAGE1_NAME>",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 4000,
+                    "protocol": "tcp",
+                    "containerPort": 4000 
+                }
+            ],
+            "secrets": [
+                {
+                    "name": "DATABASE_URL",
+                     "valueFrom": "arn:aws:ssm:ap-southeast-1:476009599192:parameter/databaseURL"
+                }
+            ]
+        }
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "cpu": "256",
+    "memory": "512",
+    "family": "cms-prod"
+}

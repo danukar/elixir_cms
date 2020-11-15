@@ -1,0 +1,12 @@
+version: 0.2
+env:
+  parameter-store:
+    DATABASE_URL: "arn:aws:ssm:ap-southeast-1:476009599192:parameter/databaseURL-Stag"
+phases:
+  build:
+    commands:
+      - mix deps.get
+      - mix deps.compile
+      - cd assets && npm install && cd ..
+      - mix ecto.rollback --all
+      - mix test
